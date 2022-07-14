@@ -1,0 +1,27 @@
+model_dir: dataset-vi-en/data/run/
+
+data:
+  train_features_file:
+    - dataset-vi-en/data/src-train.txt
+    - src-train-features/pos.txt
+    - src-train-features/lemma.txt
+  train_labels_file: dataset-vi-en/data/tgt-train.txt
+  eval_features_file: 
+    - dataset-vi-en/data/src-val.txt
+    - src-val-features/pos.txt
+    - src-val-features/lemma.txt
+  eval_labels_file : dataset-vi-en/data/tgt-val.txt 
+  source_1_vocabulary: feature_1_vocab.txt
+  source_2_vocabulary: feature_2_vocab.txt
+  source_3_vocabulary: feature_3_vocab.txt
+  target_vocabulary: target_vocab.txt
+train:
+  save_checkpoints_steps: 1000
+  batch_size : 4096
+  effective_batch_size : null
+eval:
+  scorers: bleu
+  early_stopping:
+    metric: bleu
+    min_improvement: 0.2
+    steps: 4
